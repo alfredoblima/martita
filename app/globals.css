@@ -1,0 +1,118 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "AlluraBrand";
+  src: url("/fonts/allura/Allura-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "AntonBrand";
+  src: url("/fonts/anton/Anton-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --gold: #CFB583;
+  --gold-light: #E2CFA8;
+  --gold-dark: #A68A56;
+  --coral: #E77759;
+  --coral-light: #F2967D;
+  --coral-dark: #C85A3D;
+  --offwhite: #F8F4EC;
+  --cream: #EFE5D5;
+  --coffee: #38271F;
+  --espresso: #211A17;
+  --night: #16110F;
+}
+
+@layer base {
+  html {
+    background-color: var(--offwhite);
+    color: var(--espresso);
+    scroll-behavior: auto;
+    overflow-x: hidden;
+  }
+
+  body {
+    background-color: var(--offwhite);
+    color: var(--espresso);
+    font-feature-settings: "kern" 1, "liga" 1;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    selection-background-color: var(--coral);
+    selection-color: #ffffff;
+  }
+
+  ::selection {
+    background-color: #E77759;
+    color: #FFFFFF;
+  }
+}
+
+/* Custom Editorial & Luxury Utilities */
+.font-serif-editorial {
+  font-family: var(--font-cormorant), Georgia, serif;
+}
+
+.font-sans-editorial {
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+}
+
+.font-script-brand {
+  font-family: "AlluraBrand", cursive;
+}
+
+.font-display-anton {
+  font-family: "AntonBrand", sans-serif;
+}
+
+/* Subtle Organic Grain Overlay */
+.bg-grain {
+  background-image: radial-gradient(rgba(56, 39, 31, 0.06) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #EFE5D5;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #CFB583;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #E77759;
+}
+
+/* Mask Reveal & Perspective Helpers */
+.perspective-stage {
+  perspective: 1400px;
+  transform-style: preserve-3d;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+

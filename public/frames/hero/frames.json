@@ -1,0 +1,13 @@
+{
+  "total": 160,
+  "desktop": {
+    "largura": 800,
+    "altura": 680,
+    "url": "/frames/hero/desktop/f_{n}.webp"
+  },
+  "mobile": {
+    "largura": 450,
+    "altura": 382,
+    "url": "/frames/hero/mobile/f_{n}.webp"
+  }
+}
