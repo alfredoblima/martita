@@ -159,7 +159,7 @@ export function HeroCinematic({
           </div>
 
           {/* RIGHT COLUMN: 160-FRAME SCROLL-DRIVEN TRANSPARENT VIDEO CANVAS */}
-          <div className="lg:col-span-6 flex items-center justify-center relative min-h-[26rem] sm:min-h-[32rem] order-1 lg:order-2">
+          <div className="lg:col-span-6 flex items-center justify-center relative min-h-[28.5rem] sm:min-h-[32rem] order-1 lg:order-2">
             <HeroCanvasScrub sectionRef={sectionRef} />
           </div>
         </div>
