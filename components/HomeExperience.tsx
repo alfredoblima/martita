@@ -47,9 +47,6 @@ export function HomeExperience({
   return (
     <SmoothScrollProvider>
       <div className="min-h-screen flex flex-col bg-[#F8F4EC] text-[#211A17] relative">
-        {/* Continuous Cinematic Coffee Liquid Stream running across all sections */}
-        <CoffeeLiquidStream />
-
         <Navbar whatsapp={config.whatsapp} instagram={config.instagram} />
 
         <main className="flex-1">
@@ -87,6 +84,9 @@ export function HomeExperience({
 
         {/* 8. LOCALIZAÇÃO, CONTATO & MÓDULOS COMERCIAIS */}
         <ContactAndLocation config={config} />
+
+        {/* Continuous Cinematic Coffee Liquid Stream running across all sections */}
+        <CoffeeLiquidStream />
 
         {/* Floating WhatsApp Concierge Pill */}
         <a
