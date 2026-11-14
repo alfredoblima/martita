@@ -21,7 +21,6 @@ import {
 } from "@/components/sections/ContactAndLocation";
 import { MessageCircle } from "lucide-react";
 import { buildWhatsAppLink } from "@/lib/utils";
-import { CoffeeLiquidStream } from "@/components/cinematic/CoffeeLiquidStream";
 
 interface HomeExperienceProps {
   config: SiteConfigData & {
@@ -84,9 +83,6 @@ export function HomeExperience({
 
         {/* 8. LOCALIZAÇÃO, CONTATO & MÓDULOS COMERCIAIS */}
         <ContactAndLocation config={config} />
-
-        {/* Continuous Cinematic Coffee Liquid Stream running across all sections */}
-        <CoffeeLiquidStream />
 
         {/* Floating WhatsApp Concierge Pill */}
         <a

@@ -205,7 +205,6 @@ export function ScrollStorytelling() {
     >
       {/* DESKTOP PINNED CINEMATIC STORYTELLING STAGE: SPACIOUS TOP PADDING SO IT CLEARS THE FIXED NAVBAR */}
       <div
-        id="jornada-stage"
         ref={pinWrapRef}
         style={{
           backgroundColor: currentScene.bgColor,
