@@ -49,16 +49,22 @@ model Product {
 }
 
 model GalleryItem {
-  id          String   @id @default(cuid())
-  title       String
-  caption     String?
-  category    String   // Gastronomia, Cafés, Drinks, Sobremesas, Ambiente, Experiências
-  image       String
-  aspect      String   @default("portrait") // portrait, landscape, square, wide
-  order       Int      @default(0)
-  active      Boolean  @default(true)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id           String   @id @default(cuid())
+  title        String
+  caption      String?
+  category     String   // Gastronomia, Cafés, Drinks, Sobremesas, Ambiente, Experiências
+  image        String   // URL da imagem no storage/public
+  aspect       String   @default("portrait") // portrait, landscape, square, wide
+  fileName     String?  // Nome do arquivo gerado
+  originalSize Int?     // Tamanho original em bytes
+  finalSize    Int?     // Tamanho final WebP em bytes
+  width        Int?     // Largura em pixels
+  height       Int?     // Altura em pixels
+  mimeType     String?  @default("image/webp")
+  order        Int      @default(0)
+  active       Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 }
 
 model SiteConfig {
