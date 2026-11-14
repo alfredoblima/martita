@@ -22,15 +22,18 @@ interface PathPoint {
 
 export function CoffeeLiquidStream() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
-
     const canvas = canvasRef.current;
-    if (!canvas) return;
+    if (!canvas) {
+      console.warn("CoffeeLiquidStream: canvas ref not found");
+      return;
+    }
     const ctx = canvas.getContext("2d", { alpha: true });
-    if (!ctx) return;
+    if (!ctx) {
+      console.warn("CoffeeLiquidStream: 2d context not available");
+      return;
+    }
 
     let animationFrameId: number;
     let width = window.innerWidth;
@@ -528,6 +531,7 @@ export function CoffeeLiquidStream() {
     // Main 60fps render loop
     const render = () => {
       time += 0.026;
+      targetScrollY = window.scrollY;
 
       const diff = targetScrollY - smoothScrollY;
       scrollVelocity = diff * 0.08;
@@ -680,8 +684,6 @@ export function CoffeeLiquidStream() {
       window.removeEventListener("scroll", onScroll);
     };
   }, []);
-
-  if (!mounted) return null;
 
   return (
     <canvas
