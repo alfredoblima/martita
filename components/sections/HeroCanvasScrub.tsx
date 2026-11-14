@@ -89,7 +89,7 @@ export function HeroCanvasScrub({
       // Clear previous frame to ensure alpha transparency remains perfectly crisp
       ctx.clearRect(0, 0, cw, ch);
 
-      const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+      const isMobile = typeof window !== "undefined" && window.innerWidth < 1024;
 
       // Source image dimensions & normalized cup center
       // Mobile frames are 600x510, Desktop frames are 1200x1020
@@ -98,18 +98,19 @@ export function HeroCanvasScrub({
       const sourceCupX = naturalW * (761 / 1200);
       const sourceCupY = naturalH * (500 / 1020);
 
-      // On mobile: bold and prominent scaling so the cup and beans have strong visual impact
+      // On mobile/tablet: extra bold, prominent scaling so the coffee cup and beans command the screen
       // On desktop: maintains current refined balance
       const scale = isMobile
-        ? Math.min(cw / (naturalW * 0.72), ch / (naturalH * 0.72)) * 1.10
+        ? (cw / 390) * 1.06
         : Math.min(cw / (1040 * (naturalW / 1200)), ch / (860 * (naturalH / 1020))) * 1.03;
 
       const dw = naturalW * scale;
       const dh = naturalH * scale;
 
       // Target cup center inside canvas:
-      const targetX = cw * (isMobile ? 0.58 : 0.63);
-      const targetY = ch * (isMobile ? 0.53 : 0.53);
+      // Centered on the disco on mobile (0.50 / 0.55)
+      const targetX = cw * (isMobile ? 0.50 : 0.63);
+      const targetY = ch * (isMobile ? 0.55 : 0.53);
 
       const dx = targetX - sourceCupX * scale;
       const dy = targetY - sourceCupY * scale;
@@ -288,9 +289,9 @@ export function HeroCanvasScrub({
         aria-hidden="true"
       />
 
-      {/* 2. Artisanal Pedestal / Leather-Inspired Circular Stage (Bold, prominent & proportional behind cup) */}
+      {/* 2. Artisanal Pedestal / Leather-Inspired Circular Stage (Grand, prominent & impactful on mobile) */}
       <div
-        className="relative w-[18.5rem] h-[18.5rem] xs:w-[20rem] xs:h-[20rem] sm:w-[21rem] sm:h-[21rem] md:w-[22rem] md:h-[22rem] lg:w-[23rem] lg:h-[23rem] xl:w-[25rem] xl:h-[25rem] max-w-[86vw] max-h-[86vw] rounded-full flex items-center justify-center shadow-[0_25px_70px_rgba(33,26,23,0.35)]"
+        className="relative w-[21.5rem] h-[21.5rem] sm:w-[23.5rem] sm:h-[23.5rem] md:w-[24rem] md:h-[24rem] lg:w-[23rem] lg:h-[23rem] xl:w-[25rem] xl:h-[25rem] max-w-[92vw] max-h-[92vw] rounded-full flex items-center justify-center shadow-[0_25px_70px_rgba(33,26,23,0.35)]"
         style={{
           background:
             "radial-gradient(circle at 35% 30%, #5C3825 0%, #3D2316 65%, #23140C 100%)",
@@ -319,7 +320,7 @@ export function HeroCanvasScrub({
 
         {/* 3. HTML5 Interactive Scrub Canvas: High-Def, Bold Cup & Beans Escaping Upwards */}
         <div
-          className="absolute -top-16 sm:-top-20 md:-top-22 lg:-top-24 bottom-0 left-1/2 -translate-x-[57%] w-[27rem] sm:w-[31rem] md:w-[35rem] lg:w-[39rem] xl:w-[43rem] flex items-center justify-center pointer-events-none z-10 overflow-visible"
+          className="absolute -top-16 sm:-top-20 md:-top-22 lg:-top-24 bottom-0 left-1/2 -translate-x-1/2 lg:-translate-x-[57%] w-[26rem] sm:w-[30rem] md:w-[35rem] lg:w-[39rem] xl:w-[43rem] max-w-[115vw] flex items-center justify-center pointer-events-none z-10 overflow-visible"
         >
           <canvas
             ref={canvasRef}
@@ -339,7 +340,7 @@ export function HeroCanvasScrub({
         </div>
 
         {/* 4. Interactive Floating Badge: Pin Status & Scrub Progress */}
-        <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 z-20 px-4 sm:px-5 py-1.5 sm:py-2 rounded-full bg-[#211A17]/95 backdrop-blur-md text-[#F8F4EC] border border-[#CFB583]/50 shadow-2xl flex items-center gap-2.5 sm:gap-3 whitespace-nowrap max-w-[94vw]">
+        <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 z-20 px-4 sm:px-5 py-1.5 sm:py-2 rounded-full bg-[#211A17]/95 backdrop-blur-md text-[#F8F4EC] border border-[#CFB583]/50 shadow-2xl flex items-center gap-2.5 sm:gap-3 whitespace-nowrap max-w-[94vw]">
           <span
             className={`w-2 h-2 rounded-full ${
               isFinished ? "bg-emerald-400" : "bg-[#E77759] animate-pulse"
