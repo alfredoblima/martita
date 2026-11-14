@@ -1,25 +1,9 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import { Cormorant_Garamond, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { prisma } from "@/lib/prisma";
 import { TrackingProvider } from "@/components/analytics/TrackingProvider";
 import Script from "next/script";
-
-const cormorant = Cormorant_Garamond({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  style: ["normal", "italic"],
-  variable: "--font-cormorant",
-  display: "swap",
-});
-
-const jakarta = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-jakarta",
-  display: "swap",
-});
 
 export async function generateMetadata(): Promise<Metadata> {
   try {
@@ -81,8 +65,18 @@ export default async function RootLayout({
   const bodyScripts = trackingScripts.filter((s) => s.location !== "head");
 
   return (
-    <html lang="pt-BR" className={`${cormorant.variable} ${jakarta.variable}`}>
+    <html lang="pt-BR">
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet"
+        />
         {headScripts.map((s) => (
           <script
             key={s.id}

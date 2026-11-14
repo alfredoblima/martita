@@ -17,6 +17,8 @@
 }
 
 :root {
+  --font-cormorant: "Cormorant Garamond", Georgia, serif;
+  --font-jakarta: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
   --gold: #CFB583;
   --gold-light: #E2CFA8;
   --gold-dark: #A68A56;
