@@ -21,6 +21,7 @@ import {
 } from "@/components/sections/ContactAndLocation";
 import { MessageCircle } from "lucide-react";
 import { buildWhatsAppLink } from "@/lib/utils";
+import { CoffeeLiquidStream } from "@/components/cinematic/CoffeeLiquidStream";
 
 interface HomeExperienceProps {
   config: SiteConfigData & {
@@ -46,6 +47,9 @@ export function HomeExperience({
   return (
     <SmoothScrollProvider>
       <div className="min-h-screen flex flex-col bg-[#F8F4EC] text-[#211A17] relative">
+        {/* Continuous Cinematic Coffee Liquid Stream running across all sections */}
+        <CoffeeLiquidStream />
+
         <Navbar whatsapp={config.whatsapp} instagram={config.instagram} />
 
         <main className="flex-1">
