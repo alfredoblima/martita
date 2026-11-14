@@ -6,6 +6,7 @@ import gsap from "gsap";
 import { ArrowDown, Compass, Coffee, Wine, Sparkles } from "lucide-react";
 import { MartitaLogo } from "@/components/ui/MartitaLogo";
 import { HeroCanvasScrub } from "@/components/sections/HeroCanvasScrub";
+import { useSmoothScroll } from "@/components/providers/SmoothScrollProvider";
 
 interface HeroCinematicProps {
   headline: string;
@@ -20,6 +21,7 @@ export function HeroCinematic({
   ctaText,
 }: HeroCinematicProps) {
   const sectionRef = useRef<HTMLElement>(null);
+  const { scrollTo } = useSmoothScroll();
 
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia(
@@ -49,7 +51,7 @@ export function HeroCinematic({
     <section
       id="topo"
       ref={sectionRef}
-      className="relative min-h-screen bg-gradient-to-b from-[#F8F4EC] via-[#F4ECE0] to-[#EFE5D5] bg-grain overflow-hidden flex items-center"
+      className="relative min-h-screen bg-gradient-to-b from-[#F8F4EC] via-[#F4ECE0] to-[#EFE5D5] bg-grain overflow-hidden flex items-center scroll-mt-24 xl:scroll-mt-28"
     >
       {/* Warm Ambient Table Lighting */}
       <div
@@ -106,7 +108,12 @@ export function HeroCinematic({
 
               <a
                 href="#jornada"
-                className="inline-flex items-center gap-3 px-7 py-4 rounded-full border border-[#38271F]/30 bg-white/80 backdrop-blur-sm text-[#211A17] text-xs uppercase tracking-[0.2em] font-semibold hover:border-[#CFB583] hover:bg-[#EFE5D5] transition-all duration-300"
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollTo("#jornada");
+                  if (window.history.pushState) window.history.pushState(null, "", "#jornada");
+                }}
+                className="inline-flex items-center gap-3 px-7 py-4 rounded-full border border-[#38271F]/30 bg-white/80 backdrop-blur-sm text-[#211A17] text-xs uppercase tracking-[0.2em] font-semibold hover:border-[#CFB583] hover:bg-[#EFE5D5] transition-all duration-300 cursor-pointer"
               >
                 <span>Acompanhar a Jornada</span>
                 <ArrowDown className="w-4 h-4 text-[#E77759] animate-bounce" />

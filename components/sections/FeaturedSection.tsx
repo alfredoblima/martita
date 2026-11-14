@@ -66,7 +66,7 @@ export function FeaturedSection({
     <section
       id="destaques"
       ref={sectionRef}
-      className="relative py-24 lg:py-32 bg-[#EFE5D5] text-[#211A17] overflow-hidden"
+      className="relative py-24 lg:py-32 bg-[#EFE5D5] text-[#211A17] overflow-hidden scroll-mt-24 xl:scroll-mt-28"
     >
       {/* Top & Bottom Subtle Borders */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">

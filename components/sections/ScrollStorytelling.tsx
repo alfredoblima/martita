@@ -201,7 +201,7 @@ export function ScrollStorytelling() {
         backgroundColor: currentScene.bgColor,
         color: currentScene.textColor,
       }}
-      className="relative w-full overflow-hidden transition-colors duration-700 ease-out"
+      className="relative w-full overflow-hidden transition-colors duration-700 ease-out scroll-mt-24 xl:scroll-mt-28"
     >
       {/* DESKTOP PINNED CINEMATIC STORYTELLING STAGE: SPACIOUS TOP PADDING SO IT CLEARS THE FIXED NAVBAR */}
       <div

@@ -71,7 +71,7 @@ export function EssenceSection({
     <section
       id="essencia"
       ref={sectionRef}
-      className="relative py-24 lg:py-36 bg-[#F8F4EC] text-[#211A17] overflow-hidden bg-grain"
+      className="relative py-24 lg:py-36 bg-[#F8F4EC] text-[#211A17] overflow-hidden bg-grain scroll-mt-24 xl:scroll-mt-28"
     >
       {/* Decorative Editorial Vertical Line */}
       <div

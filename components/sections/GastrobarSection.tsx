@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
+import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Wine, Sparkles, Flame, Utensils, MessageCircle } from "lucide-react";
@@ -78,7 +79,7 @@ export function GastrobarSection({
     <section
       id="gastrobar"
       ref={sectionRef}
-      className="relative overflow-hidden"
+      className="relative overflow-hidden scroll-mt-24 xl:scroll-mt-28"
     >
       {/* Top Day-to-Night Atmospheric Gradient Bridge */}
       <div
@@ -130,12 +131,12 @@ export function GastrobarSection({
               </p>
 
               <div className="gastro-reveal flex flex-wrap items-center gap-4">
-                <a
-                  href="#cardapio"
+                <Link
+                  href="/cardapio"
                   className="px-7 py-3.5 rounded-full bg-[#E77759] text-white text-xs uppercase tracking-[0.2em] font-semibold hover:bg-[#CFB583] hover:text-[#211A17] transition-colors"
                 >
                   Ver Carta de Drinks & Petiscos
-                </a>
+                </Link>
                 <a
                   href={buildWhatsAppLink(
                     whatsapp,

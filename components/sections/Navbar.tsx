@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Share2, MessageCircle, Sparkles, Lock, Check } from "lucide-react";
 import { MartitaLogo } from "@/components/ui/MartitaLogo";
 import { buildWhatsAppLink } from "@/lib/utils";
+import { useSmoothScroll } from "@/components/providers/SmoothScrollProvider";
 
 interface NavbarProps {
   whatsapp?: string;
@@ -25,6 +26,7 @@ export function Navbar({ whatsapp }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [copiedShare, setCopiedShare] = useState(false);
+  const { scrollTo } = useSmoothScroll();
 
   useEffect(() => {
     const onScroll = () => {
@@ -33,6 +35,38 @@ export function Navbar({ whatsapp }: NavbarProps) {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
+    const isHash = href.startsWith("#") || href.startsWith("/#");
+    if (!isHash) return;
+
+    const hash = href.startsWith("/#") ? href.substring(1) : href; // e.g. "#essencia"
+
+    // If on home page, intercept for custom butter-smooth scroll
+    if (
+      typeof window !== "undefined" &&
+      (window.location.pathname === "/" || window.location.pathname === "")
+    ) {
+      e.preventDefault();
+
+      if (mobileOpen) {
+        setMobileOpen(false);
+      }
+
+      scrollTo(hash);
+
+      if (window.history.pushState) {
+        window.history.pushState(null, "", hash);
+      }
+    } else {
+      if (mobileOpen) {
+        setMobileOpen(false);
+      }
+    }
+  };
 
   const handleShare = async () => {
     const shareData = {
@@ -71,7 +105,8 @@ export function Navbar({ whatsapp }: NavbarProps) {
             {/* Brand Logo — Fixed height, never changes size on scroll */}
             <a
               href="#topo"
-              className="group focus:outline-none shrink-0 flex items-center"
+              onClick={(e) => handleNavClick(e, "#topo")}
+              className="group focus:outline-none shrink-0 flex items-center cursor-pointer"
               aria-label="Martita Café & Gastrobar - Início"
             >
               <MartitaLogo size="sm" showTagline={false} />
@@ -86,7 +121,8 @@ export function Navbar({ whatsapp }: NavbarProps) {
                 <a
                   key={item.href}
                   href={item.href}
-                  className="relative whitespace-nowrap text-[11px] uppercase tracking-[0.22em] font-semibold text-[#38271F]/85 hover:text-[#E77759] transition-colors py-1.5 group"
+                  onClick={(e) => handleNavClick(e, item.href)}
+                  className="relative whitespace-nowrap text-[11px] uppercase tracking-[0.22em] font-semibold text-[#38271F]/85 hover:text-[#E77759] transition-colors py-1.5 group cursor-pointer"
                 >
                   {item.label}
                   <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[1.5px] bg-[#E77759] transition-all duration-300 group-hover:w-full" />
@@ -186,8 +222,8 @@ export function Navbar({ whatsapp }: NavbarProps) {
                 <a
                   key={item.href}
                   href={item.href}
-                  onClick={() => setMobileOpen(false)}
-                  className="block py-3 text-2xl sm:text-3xl font-serif-editorial italic text-[#F8F4EC] hover:text-[#E77759] border-b border-[#CFB583]/15 transition-colors"
+                  onClick={(e) => handleNavClick(e, item.href)}
+                  className="block py-3 text-2xl sm:text-3xl font-serif-editorial italic text-[#F8F4EC] hover:text-[#E77759] border-b border-[#CFB583]/15 transition-colors cursor-pointer"
                 >
                   {item.label}
                 </a>

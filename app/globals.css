@@ -34,8 +34,35 @@
   html {
     background-color: var(--offwhite);
     color: var(--espresso);
-    scroll-behavior: auto;
+    scroll-behavior: smooth;
     overflow-x: hidden;
+  }
+
+  /* Fixed header scroll offset so target headings are never hidden underneath */
+  #topo,
+  #jornada,
+  #essencia,
+  #destaques,
+  #gastrobar,
+  #galeria,
+  #contato,
+  section[id],
+  footer[id] {
+    scroll-margin-top: 5.5rem;
+  }
+
+  @media (min-width: 1280px) {
+    #topo,
+    #jornada,
+    #essencia,
+    #destaques,
+    #gastrobar,
+    #galeria,
+    #contato,
+    section[id],
+    footer[id] {
+      scroll-margin-top: 6.75rem;
+    }
   }
 
   body {

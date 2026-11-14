@@ -101,7 +101,7 @@ export function GallerySection({ items }: GallerySectionProps) {
   return (
     <section
       id="galeria"
-      className="relative py-24 lg:py-36 bg-[#F8F4EC] text-[#211A17] overflow-hidden bg-grain"
+      className="relative py-24 lg:py-36 bg-[#F8F4EC] text-[#211A17] overflow-hidden bg-grain scroll-mt-24 xl:scroll-mt-28"
     >
       <div className="max-w-[94rem] mx-auto px-4 sm:px-6 lg:px-10 xl:px-14 w-full">
         {/* Header & Category Filter */}

@@ -133,7 +133,7 @@ export function ContactAndLocation({ config }: ContactAndLocationProps) {
   return (
     <footer
       id="contato"
-      className="relative bg-[#EFE5D5] text-[#211A17] pt-24 pb-12 border-t border-[#CFB583]/45 overflow-hidden"
+      className="relative bg-[#EFE5D5] text-[#211A17] pt-24 pb-12 border-t border-[#CFB583]/45 overflow-hidden scroll-mt-24 xl:scroll-mt-28"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 space-y-20">
         {/* Top Section: Location, Contact Cards & Configurable Map */}
